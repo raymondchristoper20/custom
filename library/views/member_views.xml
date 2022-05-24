@@ -1,0 +1,64 @@
+<odoo>
+    <record id="member_view_form" model="ir.ui.view">
+        <field name="name">member.view.form</field>
+        <field name="model">library.member</field>
+        <field name="arch" type="xml">
+            <form string="Member Form">
+                <header>
+                        <button name="action_confirmed" string="Confirm" states="draft" type="object" class="btn-primary"/>
+                        <button name="action_settodraft" string="Set to Draft" states="confirmed" type="object" class="btn-primary"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft, confirmed"></field>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="nik"/>
+                            <field name="email"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="member_view_list" model="ir.ui.view">
+        <field name="name">member.view.list</field>
+        <field name="model">library.member</field>
+        <field name="arch" type="xml">
+            <tree string="Member List">
+                <field name="name"/>
+                <field name="nik"/>
+                <field name="email"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="member_view_search" model="ir.ui.view">
+        <field name="name">member.view.search</field>
+        <field name="model">library.member</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="nik"/>
+                <field name="email"/>
+                <filter string="Draft" name="draft_filter" domain="[('state', '=', 'draft')]"/>
+                <filter string="Confirmed" name="confirmed_filter" domain="[('state', '=', 'confirmed')]"/>
+                <group string="Group By..." expand="0" name="groupby">
+                    <filter string="State" name="by_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="member_action" model="ir.actions.act_window">
+        <field name="name">Member</field>
+        <field name="res_model">library.member</field>
+        <field name="view_id" ref="member_view_list"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="member_menu" parent="library_menu" name="Member" action="member_action" sequence="20"/>
+
+</odoo>
