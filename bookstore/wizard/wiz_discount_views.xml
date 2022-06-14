@@ -1,0 +1,32 @@
+<odoo>
+<!--    <act_window id="wiz_book_discount_action" name="Book Discount" res_model="wiz.book.discount"-->
+<!--                src_models="books" view_mode="form" target="new"/>-->
+
+
+    <record id="wiz_book_view_form" model="ir.ui.view">
+        <field name="name">wiz.book.view.form</field>
+        <field name="model">wiz.book.discount</field>
+        <field name="arch" type="xml">
+            <form string="Discount Form">
+                    <group>
+                            <field name="book_id" widget="many2many_list"/>
+                            <field name="discount"/>
+                    </group>
+                 <footer>
+                        <button name="set_book_discount" string="Update Discount" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                 </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="discount_action" model="ir.actions.act_window">
+        <field name="name">Wizard Discount</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wiz.book.discount</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="discount_menu" parent="bookstore.bookstore_menu" name="Wizard Discount" action="discount_action" sequence="10"/>
+</odoo>

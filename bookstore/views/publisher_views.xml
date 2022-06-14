@@ -1,0 +1,64 @@
+<odoo>
+    <record id="publisher_view_form" model="ir.ui.view">
+        <field name="name">book.view.form</field>
+        <field name="model">bookstore.publisher</field>
+        <field name="arch" type="xml">
+            <form string="Publisher Form">
+                <header>
+                        <button name="action_confirmed" string="Confirm" states="draft" type="object" class="btn-primary"/>
+                        <button name="action_settodraft" string="Set to Draft" states="confirmed" type="object" class="btn-primary"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft, confirmed"></field>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="number"/>
+                            <field name="address"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="publisher_view_list" model="ir.ui.view">
+        <field name="name">publisher.view.list</field>
+        <field name="model">bookstore.publisher</field>
+        <field name="arch" type="xml">
+            <tree string="Publisher List">
+                <field name="name"/>
+                <field name="number"/>
+                <field name="address"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="publisher_view_search" model="ir.ui.view">
+        <field name="name">publisher.view.search</field>
+        <field name="model">bookstore.publisher</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="number"/>
+                <field name="address"/>
+                <filter string="Draft" name="draft_filter" domain="[('state', '=', 'draft')]"/>
+                <filter string="Confirmed" name="confirmed_filter" domain="[('state', '=', 'confirmed')]"/>
+                <group string="Group By..." expand="0" name="groupby">
+                    <filter string="State" name="by_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="publisher_action" model="ir.actions.act_window">
+        <field name="name">Publisher</field>
+        <field name="res_model">bookstore.publisher</field>
+        <field name="view_id" ref="publisher_view_list"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="publisher_menu" parent="bookstore_menu" name="Publisher" action="publisher_action" sequence="30"/>
+
+</odoo>

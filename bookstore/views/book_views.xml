@@ -1,0 +1,84 @@
+<odoo>
+<!--    <act_window id="wiz_book_discount_action" name="Discount" res_model="wiz.book.discount"-->
+<!--                src_models="books" view_mode="form" target="new"/>-->
+
+    <record id="book_view_form" model="ir.ui.view">
+        <field name="name">book.view.form</field>
+        <field name="model">bookstore.book</field>
+        <field name="arch" type="xml">
+            <form string="Book Form">
+                <header>
+                        <button name="action_confirmed" string="Confirm" states="draft" type="object" class="btn-primary"/>
+                        <button name="action_settodraft" string="Set to Draft" states="confirmed" type="object" class="btn-primary"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft, confirmed"></field>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                                <button name="action_wiz_book" type="object" string="Update Discount" class="oe_stat_button" icon="fa-pencil-square-o">
+                                </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="title"/>
+                            <field name="publisher"/>
+                            <field name="author"/>
+                            <field name="price"/>
+                            <field name="discount"/>
+                            <field name="quantity"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="book_view_list" model="ir.ui.view">
+        <field name="name">book.view.list</field>
+        <field name="model">bookstore.book</field>
+        <field name="arch" type="xml">
+            <tree string="Book List">
+                <field name="code"/>
+                <field name="title"/>
+                <field name="publisher"/>
+                <field name="author"/>
+                <field name="price"/>
+                <field name="discount"/>
+                <field name="quantity"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="book_view_search" model="ir.ui.view">
+        <field name="name">book.view.search</field>
+        <field name="model">bookstore.book</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="code"/>
+                <field name="title"/>
+                <field name="publisher"/>
+                <field name="author"/>
+                <filter string="Draft" name="draft_filter" domain="[('state', '=', 'draft')]"/>
+                <filter string="Confirmed" name="confirmed_filter" domain="[('state', '=', 'confirmed')]"/>
+                <group string="Group By..." expand="0" name="groupby">
+                    <filter string="State" name="by_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="book_action" model="ir.actions.act_window">
+        <field name="name">Book</field>
+        <field name="res_model">bookstore.book</field>
+        <field name="view_id" ref="book_view_list"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="bookstore2_menu" name="Book Store" sequence="10"/>
+
+    <menuitem id="bookstore_menu" parent="bookstore.bookstore2_menu" name="Book" action="book_action" sequence="10"/>
+
+    <menuitem id="book_menu" parent="bookstore.bookstore_menu" name="Book" action="book_action" sequence="10"/>
+
+</odoo>

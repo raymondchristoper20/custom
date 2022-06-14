@@ -1,0 +1,18 @@
+<odoo noupdate="0">
+    <record id="sequence_bookstore_book_seq" model="ir.sequence">
+            <field name="name">Bookstore Book</field>
+            <field name="code">bookstore.book</field>
+            <field name="prefix">BOOK</field>
+            <field eval="5" name="padding"/>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+    </record>
+<!--    <record id="sequence_bookstore_transaction_seq" model="ir.sequence">-->
+<!--            <field name="name">Bookstore Transaction</field>-->
+<!--            <field name="code">bookstore.transaction</field>-->
+<!--            <field name="prefix">T/%(range_year)s/%(range_month)s/%(range_day)s/</field>-->
+<!--            <field eval="3" name="padding"/>-->
+<!--            <field eval="1" name="number_next"/>-->
+<!--            <field eval="1" name="number_increment"/>-->
+<!--    </record>-->
+</odoo>

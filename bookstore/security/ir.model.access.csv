@@ -1,0 +1,13 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_book_user","Access Book for User","model_bookstore_book","sales_team.group_sale_salesman_all_leads",1,1,1,0
+"access_book_admin","Access Book for Admin","model_bookstore_book","sales_team.group_sale_manager",1,1,1,1
+"access_author_user","Access author for User","model_bookstore_author","sales_team.group_sale_salesman_all_leads",1,1,1,0
+"access_author_admin","Access author for Admin","model_bookstore_author","sales_team.group_sale_manager",1,1,1,1
+"access_publisher_user","Access publisher for User","model_bookstore_publisher","sales_team.group_sale_salesman_all_leads",1,1,1,0
+"access_publisher_admin","Access publisher for Admin","model_bookstore_publisher","sales_team.group_sale_manager",1,1,1,1
+"access_transaction_user","Access transaction for User","model_bookstore_transaction","sales_team.group_sale_salesman_all_leads",1,1,1,0
+"access_transaction_admin","Access transaction for Admin","model_bookstore_transaction","sales_team.group_sale_manager",1,1,1,1
+"access_dTransaction_user","Access dTransaction for User","model_bookstore_dtransaction","sales_team.group_sale_salesman_all_leads",1,1,1,0
+"access_dTransaction_admin","Access dTransaction for Admin","model_bookstore_dtransaction","sales_team.group_sale_manager",1,1,1,1
+"access_wiz_book_discount_user","Access Wiz Book Discount for User","model_wiz_book_discount","sales_team.group_sale_salesman_all_leads",1,1,1,0
+"access_wiz_book_discount_admin","Access Wiz Book Discount for Admin","model_wiz_book_discount","sales_team.group_sale_manager",1,1,1,1

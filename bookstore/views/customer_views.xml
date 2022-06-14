@@ -1,0 +1,49 @@
+<odoo>
+    <record id="res_partner_inherit" model="ir.ui.view">
+        <field name="name">res.partner.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="function" position="after">
+                <field name="nik"/>
+            </field>
+
+            <field name="nik" position="after">
+                <field name="member"/>
+            </field>
+
+            <field name="function" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+
+            <field name="company_type" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+
+            <notebook position="attributes">
+                <attribute name="invisible">True</attribute>
+            </notebook>
+
+            <field name="vat" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+
+            <field name="website" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+
+            <field name="category_id" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+
+            <field name="title" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+
+            <div class="oe_button_box" name="button_box" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </div>
+
+        </field>
+    </record>
+</odoo>
