@@ -1,7 +1,5 @@
-from odoo import models, fields, api, _
+from odoo import models, fields, api, exceptions, _
 # _ untuk translate
-from server.odoo import exceptions
-
 
 class transaction(models.Model):
     _name = 'bookstore.transaction'

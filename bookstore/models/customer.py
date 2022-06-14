@@ -1,4 +1,4 @@
-from odoo import models, fields, api, _
+from odoo import models, fields, api, exceptions, _
 
 class customer(models.Model):
     _inherit = 'res.partner'

@@ -1,4 +1,4 @@
-from odoo import models, fields, api, _
+from odoo import models, fields, api, exceptions, _
 # _ untuk translate
 
 class book(models.Model):
